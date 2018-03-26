@@ -110,3 +110,7 @@ let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
 
 " --- airblade/vim-gitgutter ---
 " No settings needed.
+
+
+" --- Raimondi/delimitMate ---
+" No settings needed.
