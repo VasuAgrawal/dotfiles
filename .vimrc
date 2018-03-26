@@ -32,7 +32,6 @@ set autowrite                  " Automatically write when buffer changes
 set encoding=utf-8             " Set encoding to utf8
 set mouse=a                    " Enable the mouse in all modes
 set t_Co=256                   " Number of terminal colors
-" set background=dark            " Use a dark background for vim
 
 
 " --- Things to do with tabs ---
@@ -114,3 +113,14 @@ let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
 
 " --- Raimondi/delimitMate ---
 " No settings needed.
+
+
+" --- rafi/awesome-vim-colorschemes ---
+" colorscheme wombat256mod
+" set background=light " Use a dark background for vim
+
+set termguicolors
+let g:gruvbox_italic=1
+let g:gruvbox_bold=1
+colorscheme gruvbox
+set background=dark

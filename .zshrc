@@ -144,7 +144,7 @@ alias l='ls -CF'
 
 # aliases for Tmux
 alias tconf='vim ~/.tmux.conf && tmux source ~/.tmux.conf'
-alias tmux='tmux -2'
+# alias tmux='tmux -2'
 alias ta='tmux attach -t'
 alias tnew='tmux new -s'
 alias tls='tmux ls'
