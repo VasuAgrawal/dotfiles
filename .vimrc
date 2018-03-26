@@ -96,3 +96,13 @@ let g:NERDSpaceDelims=1 " Add spaces after comment delimiters
 let g:NERDCompactSexyComs=1 " Use compacy syntax for pretty multiline comments
 let g:NERDDefaultAlign='left' " Align left instead of following code
 let g:NERDCommentEmptyLines=1 " Allow commenting of empty lines
+
+
+" --- ctrlpvim/ctrlp ---
+let g:ctrlp_map='<c-p>' " Invoke commands with CTRL-P
+let g:ctrlp_cmd='CtrlP' " Default command
+let g:ctrlp_working_path_mode='ra' " Try to find the root folder.
+let g:ctrlp_show_hidden=1 " Allow ctrlp to show hidden file
+let g:ctrlp_by_filename=1 " Search by filename by default
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
