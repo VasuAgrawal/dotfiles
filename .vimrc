@@ -34,13 +34,25 @@ set mouse=a                    " Enable the mouse in all modes
 set t_Co=256                   " Number of terminal colors
 " set background=dark            " Use a dark background for vim
 
-" Things to do with tabs
+
+" --- Things to do with tabs ---
 set tabstop=4                  " Tabs are 4 spaces
 set shiftwidth=4               " Same as above
 set smarttab                   " Replace inserted tabs with spaces
 set softtabstop=0              " Disable this feature?
 set expandtab                  " Actually convert tabs to spaces
 set shiftround                 " Shifts always move to an indent location
+set hidden                     " Allows having edited buffers open
+
+" --- Custom key remappings ---
+" Remap escape to kj 
+inoremap kj <Esc>
+" Remap ctrl-v to paste correctly
+inoremap <C-v> :set paste<Enter>+:set nopaste<Enter>
+
+" Mappings to switch back and forth between buffers
+map <C-Tab> :bnext<CR>
+map <C-S-Tab> :bprevious<CR>
 
 
 " --- tpope/vim-pathogen ---
