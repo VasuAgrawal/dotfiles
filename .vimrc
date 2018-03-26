@@ -53,3 +53,8 @@ let g:airline_powerline_fonts=1 " Fancy powerline symbols, needs patched font
 let g:airline_detect_paste=1 " Detect paste mode
 set laststatus=2 " Always show statusbar
 let g:airline_theme='bubblegum' " Requires vim-airline/vim-airline-themes
+
+
+" --- w0rp/ale ---
+let g:ale_sign_column_always=1 " Always show the sign column for sanity
+let g:airline#extensions#ale#enabled=1 " Enable ALE integration in airline
