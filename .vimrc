@@ -62,3 +62,14 @@ let g:airline#extensions#ale#enabled=1 " Enable ALE integration in airline
 
 " --- christoomey/vim-tmux-navigator ---
 " No settings needed.
+
+
+" --- scrooloose/nerdtree ---
+" No settings needed.
+
+
+" --- jistr/vim-nerdtree-tabs ---
+" No longer actively maintained, but good enough.
+
+" Open / close NERDTree tabs with \t
+nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
