@@ -58,3 +58,7 @@ let g:airline_theme='bubblegum' " Requires vim-airline/vim-airline-themes
 " --- w0rp/ale ---
 let g:ale_sign_column_always=1 " Always show the sign column for sanity
 let g:airline#extensions#ale#enabled=1 " Enable ALE integration in airline
+
+
+" --- christoomey/vim-tmux-navigator ---
+" No settings needed.
