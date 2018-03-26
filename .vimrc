@@ -73,3 +73,10 @@ let g:airline#extensions#ale#enabled=1 " Enable ALE integration in airline
 
 " Open / close NERDTree tabs with \t
 nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
+
+
+" --- scrooloose/nerdcommenter ---
+let g:NERDSpaceDelims=1 " Add spaces after comment delimiters
+let g:NERDCompactSexyComs=1 " Use compacy syntax for pretty multiline comments
+let g:NERDDefaultAlign='left' " Align left instead of following code
+let g:NERDCommentEmptyLines=1 " Allow commenting of empty lines
