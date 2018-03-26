@@ -43,6 +43,13 @@ set expandtab                  " Actually convert tabs to spaces
 set shiftround                 " Shifts always move to an indent location
 
 
-" --- Pathogen Plugin ---
+" --- tpope/vim-pathogen ---
 execute pathogen#infect()
 Helptags
+
+
+" --- vim-airline/vim-airline ---
+let g:airline_powerline_fonts=1 " Fancy powerline symbols, needs patched font
+let g:airline_detect_paste=1 " Detect paste mode
+set laststatus=2 " Always show statusbar
+let g:airline_theme='bubblegum' " Requires vim-airline/vim-airline-themes
