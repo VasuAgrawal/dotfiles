@@ -106,3 +106,7 @@ let g:ctrlp_show_hidden=1 " Allow ctrlp to show hidden file
 let g:ctrlp_by_filename=1 " Search by filename by default
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
+
+
+" --- airblade/vim-gitgutter ---
+" No settings needed.
