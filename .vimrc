@@ -51,8 +51,8 @@ inoremap kj <Esc>
 inoremap <C-v> :set paste<Enter>+:set nopaste<Enter>
 
 " Mappings to switch back and forth between buffers
-map <C-Tab> :bnext<CR>
-map <C-S-Tab> :bprevious<CR>
+nnoremap ] :bnext<CR>
+nnoremap [ :bprevious<CR>
 
 
 " --- tpope/vim-pathogen ---
@@ -65,6 +65,10 @@ let g:airline_powerline_fonts=1 " Fancy powerline symbols, needs patched font
 let g:airline_detect_paste=1 " Detect paste mode
 set laststatus=2 " Always show statusbar
 let g:airline_theme='bubblegum' " Requires vim-airline/vim-airline-themes
+let g:airline#extensions#tabline#enabled=1 " Enable tabline to show buffers
+let g:airline#extensions#tabline#left_sep=' ' " Blank sep
+let g:airline#extensions#tabline#left_alt_sep=' ' " Blank sep
+let g:airline#extensions#tabline#formatter='unique_tail_improved' " Formatter
 
 
 " --- w0rp/ale ---
