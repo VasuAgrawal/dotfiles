@@ -17,7 +17,7 @@ set showcmd                    " Shows the command being typed
 set incsearch                  " Complete search results as they're typed
 set ignorecase                 " Case insensitive search
 set smartcase                  " Unless literal upper case specified
-" set hlsearch                   " Highlight previous search results
+set hlsearch                   " Highlight previous search results
 set textwidth=80               " Text width forced to 80
 set colorcolumn=+1             " Color the column after textwidth
 set autoindent                 " Automatic indentation

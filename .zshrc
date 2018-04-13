@@ -199,6 +199,7 @@ alias 349="cd ~/Documents/classes/18-349"
 source /opt/ros/kinetic/setup.zsh
 source ~/Documents/ros/devel/setup.zsh
 source ~/Documents/projects/BarBot/Controller/devel/setup.zsh
+source ~/Documents/projects/KDC-Final-Project/devel/setup.zsh
 
 # Postgres
 export PATH=${PATH}:/usr/lib/postgresql/9.5/bin
