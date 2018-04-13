@@ -32,6 +32,7 @@ set autowrite                  " Automatically write when buffer changes
 set encoding=utf-8             " Set encoding to utf8
 set mouse=a                    " Enable the mouse in all modes
 set t_Co=256                   " Number of terminal colors
+set foldmethod=syntax          " Allow folding based on syntax highlighting
 
 
 " --- Things to do with tabs ---
@@ -43,6 +44,11 @@ set expandtab                  " Actually convert tabs to spaces
 set shiftround                 " Shifts always move to an indent location
 set hidden                     " Allows having edited buffers open
 
+
+" --- FileType specific handling ---
+autocmd FileType gitcommit setlocal textwidth=72  " The proper size for commits
+
+
 " --- Custom key remappings ---
 " Remap escape to kj 
 inoremap kj <Esc>
@@ -53,10 +59,14 @@ inoremap <C-v> :set paste<Enter>+:set nopaste<Enter>
 nnoremap ] :bnext<CR>
 nnoremap [ :bprevious<CR>
 
+" Convenience things because I type too fast sometimes
+:command W w
+:command B b
+
 
 " --- tpope/vim-pathogen ---
-execute pathogen#infect()
-Helptags
+execute pathogen#infect() 
+Helptags " Generate helptags every time, in case new plugins are installed
 
 
 " --- vim-airline/vim-airline ---
@@ -124,3 +134,6 @@ let g:gruvbox_italic=1
 let g:gruvbox_bold=1
 colorscheme gruvbox
 set background=dark
+
+
+" --- tpope/vim-fugitive ---
