@@ -54,11 +54,16 @@ plugins=(
   python
   zsh-autosuggestions
   fast-syntax-highlighting
-  notify
+  bgnotify
 )
 
-# Configure notify
-# https://github.com/marzocchi/zsh-notify
+# https://github.com/t413/zsh-background-notify
+function bgnotify_formatted {
+  ## $1=exit_status, $2=command, $3=elapsed_time
+  [ $1 -eq 0 ] && title="Success" || title="Failure"
+  bgnotify "$title -- took $3 s" "$2";
+}
+
 
 # User configuration
 case $- in
