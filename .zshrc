@@ -49,7 +49,16 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(gitfast python battery)
+plugins=(
+  gitfast
+  python
+  zsh-autosuggestions
+  fast-syntax-highlighting
+  notify
+)
+
+# Configure notify
+# https://github.com/marzocchi/zsh-notify
 
 # User configuration
 case $- in
@@ -64,18 +73,6 @@ esac
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Is this necessary?
-# export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
-# This is just a better way of constructing the path, lets individual items be
-# commented out without issue.
-export PATH=${PATH}:/usr/local/games
-export PATH=${PATH}:/usr/games
 
 
 # History options
@@ -97,11 +94,6 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
-
-# Enable this later?
-# Ros specific setup
-#source /opt/ros/indigo/setup.zsh
-#source ~/ros/devel/setup.zsh
 
 source $ZSH/oh-my-zsh.sh
 
@@ -136,10 +128,12 @@ alias zshrc="vim ~/.zshrc && source ~/.zshrc"
 alias bashrc="vim ~/.bashrc && source ~/.bashrc"
 alias vimrc="vim ~/.vimrc"
 
+
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+
 
 # aliases for Tmux
 alias tconf='vim ~/.tmux.conf && tmux source ~/.tmux.conf'
@@ -155,53 +149,21 @@ zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 
 
-# Go stuff
-export PATH=$PATH:/usr/local/go/bin
-export GOPATH=$HOME/Documents/Experimental/Go
-
-
 # terminal setup
 export TERM=xterm-256color
 
 
 # cuda stuff
-export PATH=/usr/local/cuda-8.0/bin:${PATH}
-export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:${LD_LIBRARY_PATH}
-export CUDA_HOME=/usr/local/cuda-8.0
-# to uninstall cuda, run install script in /usr/local/cuda8.0/bin
+export PATH=/usr/local/cuda/bin:${PATH}
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:${LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda/extras/CUPTI/lib64
+export CUDA_HOME=/usr/local/cuda
+# to uninstall cuda, run install script in /usr/local/cuda/bin
+
+# Can't source ros by default, because python3. Instead, add it as an alias.
+alias ros="source /opt/ros/melodic/setup.zsh"
+# Source the directories for ros manually, if any.
 
 
-# Tensorflow exports
-#export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
-#export CUDA_HOME=/usr/local/cuda
-#export PATH=/usr/local/cuda-7.5/bin:$PATH
-#export LD_LIBRARY_PATH=/usr/local/cuda-7.5/lib64:$LD_LIBRARY_PATH
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f /home/hades/Downloads/google-cloud-sdk/path.zsh.inc ]; then
-  source '/home/hades/Downloads/google-cloud-sdk/path.zsh.inc'
-fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f /home/hades/Downloads/google-cloud-sdk/completion.zsh.inc ]; then
-  source '/home/hades/Downloads/google-cloud-sdk/completion.zsh.inc'
-fi
-
-
-# Things for 349
-export PATH=${PATH}:~/Documents/classes/18-349/gcc-arm-none-eabi/bin
-export PATH=${PATH}:~/Documents/classes/18-349/ftditerm
-alias 349="cd ~/Documents/classes/18-349"
-
-# ROS aliases
-#alias roscore="docker run -it --rm --net ros_network --name master ros roscore"
-source /opt/ros/kinetic/setup.zsh
-source ~/Documents/ros/devel/setup.zsh
-source ~/Documents/projects/BarBot/Controller/devel/setup.zsh
-source ~/Documents/projects/KDC-Final-Project/devel/setup.zsh
-
-# Postgres
-export PATH=${PATH}:/usr/lib/postgresql/9.5/bin
-
-# FINALLY GETTING HEADPHONES TO WORK.
-alias headphones="python3 ~/Documents/a2dp.py AC:9B:0A:0B:8B:9A -p a2dp"
+# Bazel install
+export PATH=${PATH}:${HOME}/bin
