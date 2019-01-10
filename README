@@ -1,0 +1,8 @@
+install the following:
+
+oh my zsh
+https://github.com/zsh-users/zsh-autosuggestions
+https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
+
+built custom vim with the following, to get python support (for vim-ros)
+https://gist.github.com/sevko/870123c1c54cbd6661fc
