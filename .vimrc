@@ -33,6 +33,7 @@ set encoding=utf-8             " Set encoding to utf8
 set mouse=a                    " Enable the mouse in all modes
 set t_Co=256                   " Number of terminal colors
 set foldmethod=syntax          " Allow folding based on syntax highlighting
+set nofoldenable               " Disable folding on startup
 
 
 " --- Things to do with tabs ---
@@ -137,3 +138,32 @@ set background=dark
 
 
 " --- tpope/vim-fugitive ---
+" No settings needed.
+
+
+" --- SirVer/ultisnips ---
+" let g:UltiSnipsExpandTrigger="<C-t>"
+" let g:UltiSnipsJumpForwardTrigger="<C-f>"
+" let g:UltiSnipsJumpBackwardTrigger="<C-g>"
+
+" https://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+
+" --- Valloric/YouCompleteMe ---
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+
+" --- taketwo/vim-ros ---
+let g:ycm_semantic_triggers = {
+\   'roslaunch' : ['="', '$(', '/'],
+\   'rosmsg,rossrv,rosaction' : ['re!^', '/'],
+\ }
+let g:ros_build_system = "catkin-tools"
+let g:ros_catkin_make_options = "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
