@@ -48,6 +48,8 @@ set hidden                     " Allows having edited buffers open
 
 " --- FileType specific handling ---
 autocmd FileType gitcommit setlocal textwidth=72  " The proper size for commits
+" au BufRead,BufNewFile *.launch set filetype=xml " Ros launch files
+autocmd FileType cpp setlocal shiftwidth=2 tabstop=2 " 2 space for cpp :(
 
 
 " --- Custom key remappings ---
@@ -63,6 +65,7 @@ nnoremap [ :bprevious<CR>
 " Convenience things because I type too fast sometimes
 :command W w
 :command B b
+:command Wq wq
 
 
 " --- tpope/vim-pathogen ---
@@ -151,6 +154,7 @@ set background=dark
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:ultisnips_python_style = "google"
 
 
 " --- Valloric/YouCompleteMe ---

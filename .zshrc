@@ -167,8 +167,22 @@ export CUDA_HOME=/usr/local/cuda
 
 # Can't source ros by default, because python3. Instead, add it as an alias.
 alias ros="source /opt/ros/melodic/setup.zsh"
+# alias ros="source /opt/ros/melodic/setup.zsh &&
+#     source /home/vasu/Documents/projects/SubT/workspaces/cv_bridge_ws/install/setup.zsh --extend"
+
 # Source the directories for ros manually, if any.
 
 
 # Bazel install
 export PATH=${PATH}:${HOME}/bin
+
+
+# Tensorflow object detection API
+export MODEL_RESEARCH_DIR="${HOME}/Downloads/tensorflow/models/research"
+export PYTHONPATH=${PYTHONPATH}:"${MODEL_RESEARCH_DIR}"
+export PYTHONPATH=${PYTHONPATH}:"${MODEL_RESEARCH_DIR}/slim"
+
+
+# Convenient subt aliases
+export SUBT=~/Documents/projects/SubT
+alias subt="cd ${SUBT}"
