@@ -66,6 +66,8 @@ nnoremap [ :bprevious<CR>
 :command W w
 :command B b
 :command Wq wq
+:command Wqa wqa
+:command Qa qa
 
 
 " --- tpope/vim-pathogen ---
@@ -162,12 +164,3 @@ let g:ultisnips_python_style = "google"
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
-
-
-" --- taketwo/vim-ros ---
-let g:ycm_semantic_triggers = {
-\   'roslaunch' : ['="', '$(', '/'],
-\   'rosmsg,rossrv,rosaction' : ['re!^', '/'],
-\ }
-let g:ros_build_system = "catkin-tools"
-let g:ros_catkin_make_options = "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"

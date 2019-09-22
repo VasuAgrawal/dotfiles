@@ -40,18 +40,9 @@
 [submodule ".vim/bundle/vim-fugitive"]
 	path = .vim/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule ".vim/bundle/a.vim"]
-	path = .vim/bundle/a.vim
-	url = https://github.com/vim-scripts/a.vim.git
-[submodule ".vim/bundle/YouCompleteMe"]
-	path = .vim/bundle/YouCompleteMe
-	url = https://github.com/Valloric/YouCompleteMe.git
-[submodule ".vim/bundle/ultisnips"]
-	path = .vim/bundle/ultisnips
-	url = https://github.com/SirVer/ultisnips.git
-[submodule ".vim/bundle/vim-snippets"]
-	path = .vim/bundle/vim-snippets
-	url = https://github.com/honza/vim-snippets.git
-[submodule ".vim/bundle/supertab"]
-	path = .vim/bundle/supertab
-	url = https://github.com/ervandew/supertab.git
+[submodule ".vim/bundle/vim-rhubarb"]
+	path = .vim/bundle/vim-rhubarb
+	url = https://github.com/tpope/vim-rhubarb.git
+[submodule ".vim/bundle/vim-fubitive"]
+	path = .vim/bundle/vim-fubitive
+	url = https://github.com/tommcdo/vim-fubitive.git
