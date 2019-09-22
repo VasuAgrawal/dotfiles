@@ -27,3 +27,7 @@ git config --global core.excludesfile ~/.gitignore_global
 `sudo chsh` -> /usr/bin/zsh
 
 install powerline fonts, and change shell font
+
+Make sure to install YCM by following the instructions on the website: https://github.com/ycm-core/YouCompleteMe#installation
+
+which is tl;dr python3 install.py --clangd-completer
