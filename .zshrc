@@ -186,3 +186,7 @@ export PYTHONPATH=${PYTHONPATH}:"${MODEL_RESEARCH_DIR}/slim"
 # Convenient subt aliases
 export SUBT=~/Documents/projects/SubT
 alias subt="cd ${SUBT}"
+
+# Go alias
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/go/bin
