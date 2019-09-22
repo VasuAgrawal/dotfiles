@@ -46,3 +46,6 @@
 [submodule ".vim/bundle/vim-fubitive"]
 	path = .vim/bundle/vim-fubitive
 	url = https://github.com/tommcdo/vim-fubitive.git
+[submodule ".vim/bundle/vim-surround"]
+	path = .vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git

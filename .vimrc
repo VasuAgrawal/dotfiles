@@ -10,7 +10,7 @@ syntax on
 
 " --- General Settings ---
 set backspace=indent,eol,start " Allows backspacing over everything in insert
-set ruler                      " Show the cursor position all the timeA
+set ruler                      " Show the cursor position all the time
 set number                     " Show the line number
 set relativenumber             " Show relative line jumps
 set showcmd                    " Shows the command being typed
@@ -89,7 +89,11 @@ let g:airline#extensions#tabline#formatter='unique_tail_improved' " Formatter
 " --- w0rp/ale ---
 let g:ale_sign_column_always=1 " Always show the sign column for sanity
 let g:airline#extensions#ale#enabled=1 " Enable ALE integration in airline
-
+let g:ale_fixers={ 'cpp': ['clang-format'], 'python': ['black'], }
+let g:ale_c_clangformat_options='-style=Google'
+let g:ale_c_parse_compile_commands=1
+let g:ale_python_black_options='-l 80'
+:command Format ALEFix
 
 " --- christoomey/vim-tmux-navigator ---
 " No settings needed.
