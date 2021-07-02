@@ -179,8 +179,8 @@ export PATH=${PATH}:${HOME}/bin
 
 # Tensorflow object detection API
 export MODEL_RESEARCH_DIR="${HOME}/Downloads/tensorflow/models/research"
-export PYTHONPATH=${PYTHONPATH}:"${MODEL_RESEARCH_DIR}"
-export PYTHONPATH=${PYTHONPATH}:"${MODEL_RESEARCH_DIR}/slim"
+# export PYTHONPATH=${PYTHONPATH}:"${MODEL_RESEARCH_DIR}"
+# export PYTHONPATH=${PYTHONPATH}:"${MODEL_RESEARCH_DIR}/slim"
 
 
 # Convenient subt aliases
@@ -190,3 +190,8 @@ alias subt="cd ${SUBT}"
 # Go alias
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/go/bin
+
+# Add pip binaries location to path
+export PATH=$PATH:${HOME}/.local/bin
+
+export PATH="$HOME/.poetry/bin:$PATH"

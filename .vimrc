@@ -89,7 +89,11 @@ let g:airline#extensions#tabline#formatter='unique_tail_improved' " Formatter
 " --- w0rp/ale ---
 let g:ale_sign_column_always=1 " Always show the sign column for sanity
 let g:airline#extensions#ale#enabled=1 " Enable ALE integration in airline
-let g:ale_fixers={ 'cpp': ['clang-format'], 'python': ['black'], }
+let g:ale_fixers={ 
+            \'cpp': ['clang-format'],
+            \'python': ['black'],
+            \'cmake': ['cmakeformat']
+            \}
 let g:ale_c_clangformat_options='-style=Google'
 let g:ale_c_parse_compile_commands=1
 let g:ale_python_black_options='-l 80'
@@ -107,7 +111,8 @@ let g:ale_python_black_options='-l 80'
 " No longer actively maintained, but good enough.
 
 " Open / close NERDTree tabs with \t
-nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
+nmap <silent> <leader>r :NERDTreeTabsToggle<CR>
+nmap <silent> <leader>t :NERDTreeFocus<CR>
 
 
 " --- scrooloose/nerdcommenter ---
