@@ -33,6 +33,22 @@ Personal configuration files for zsh, vim, and tmux.
    ```
    Log out and back in for the change to take effect.
 
+### Tmux
+
+1. Clone oh-my-tmux:
+   ```bash
+   cd ~
+   git clone --single-branch https://github.com/gpakosz/.tmux.git
+   ```
+
+2. Symlink configs:
+   ```bash
+   ln -s -f ~/.tmux/.tmux.conf ~/.tmux.conf
+   ln -sf ~/dotfiles/.tmux.conf.local ~/.tmux.conf.local
+   ```
+
+To update oh-my-tmux later: `cd ~/.tmux && git pull`
+
 ---
 
 ## Legacy
@@ -76,15 +92,6 @@ Follow the official instructions: https://github.com/ycm-core/YouCompleteMe#inst
 ```bash
 cd ~/.vim/bundle/YouCompleteMe
 python3 install.py --clangd-completer
-```
-
----
-
-## Tmux Setup
-
-```bash
-ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
-ln -sf ~/dotfiles/.tmux.conf.local ~/.tmux.conf.local
 ```
 
 ---
