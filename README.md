@@ -49,6 +49,20 @@ Personal configuration files for zsh, vim, and tmux.
 
 To update oh-my-tmux later: `cd ~/.tmux && git pull`
 
+### Vim
+
+1. Symlink vim configs:
+   ```bash
+   ln -sf ~/dotfiles/.vimrc ~/.vimrc
+   ln -sf ~/dotfiles/.vim ~/.vim
+   ```
+
+2. Initialize submodules (vim plugins):
+   ```bash
+   cd ~/dotfiles
+   git submodule update --init --recursive
+   ```
+
 ---
 
 ## Legacy
@@ -65,33 +79,6 @@ sudo dnf install powerline-fonts
 
 ```bash
 ln -sf ~/dotfiles/.bashrc ~/.bashrc
-```
-
----
-
-### Vim Setup
-
-### 1. Symlink vim configs
-
-```bash
-ln -sf ~/dotfiles/.vimrc ~/.vimrc
-ln -sf ~/dotfiles/.vim ~/.vim
-```
-
-### 2. Initialize submodules (vim plugins)
-
-```bash
-cd ~/dotfiles
-git submodule update --init --recursive
-```
-
-### 3. Install YouCompleteMe
-
-Follow the official instructions: https://github.com/ycm-core/YouCompleteMe#installation
-
-```bash
-cd ~/.vim/bundle/YouCompleteMe
-python3 install.py --clangd-completer
 ```
 
 ---
