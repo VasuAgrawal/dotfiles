@@ -1,3 +1,5 @@
+# Speed optimizations from https://scottspence.com/posts/speeding-up-my-zsh-shell
+
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
@@ -14,11 +16,10 @@ ZSH_THEME="robbyrussell"
 # sensitive completion must be off. _ and - will be interchangeable.
 HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# Oh-my-zsh performance settings
+DISABLE_AUTO_UPDATE="true"
+DISABLE_MAGIC_FUNCTIONS="true"
+DISABLE_COMPFIX="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -45,6 +46,10 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# Autosuggestions performance settings
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -55,6 +60,14 @@ plugins=(
     zsh-syntax-highlighting  # Always last!
 )
 
+# Aggressive completion caching - regenerate hourly
+autoload -Uz compinit
+if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; then
+    compinit
+else
+    compinit -C
+fi
+
 # User configuration
 case $- in
     *i*) ;;
@@ -63,12 +76,6 @@ esac
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
-
 
 # History options
 # http://unix.stackexchange.com/questions/273861/unlimited-history-in-zsh
@@ -89,27 +96,12 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
-
 source $ZSH/oh-my-zsh.sh
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
 export EDITOR="vim"
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -117,71 +109,27 @@ export VISUAL=$EDITOR
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias zshrc="vim ~/.zshrc && source ~/.zshrc"
-alias bashrc="vim ~/.bashrc && source ~/.bashrc"
 alias vimrc="vim ~/.vimrc"
-
 
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-
 # aliases for Tmux
 alias tconf='vim ~/.tmux.conf && tmux source ~/.tmux.conf'
-# alias tmux='tmux -2'
 alias ta='tmux attach -t'
 alias tnew='tmux new -s'
 alias tls='tmux ls'
 alias tkill='tmux kill-session -t'
 
-
 #cache-path must exist
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 
-
 # terminal setup
 export TERM=xterm-256color
 
-
-# cuda stuff
-export PATH=/usr/local/cuda/bin:${PATH}
-export LD_LIBRARY_PATH=/usr/local/cuda/lib64:${LD_LIBRARY_PATH}
-export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda/extras/CUPTI/lib64
-export CUDA_HOME=/usr/local/cuda
-# to uninstall cuda, run install script in /usr/local/cuda/bin
-
-# Can't source ros by default, because python3. Instead, add it as an alias.
-alias ros="source /opt/ros/melodic/setup.zsh"
-# alias ros="source /opt/ros/melodic/setup.zsh &&
-#     source /home/vasu/Documents/projects/SubT/workspaces/cv_bridge_ws/install/setup.zsh --extend"
-
-# Source the directories for ros manually, if any.
-
-
-# Bazel install
-export PATH=${PATH}:${HOME}/bin
-
-
-# Tensorflow object detection API
-export MODEL_RESEARCH_DIR="${HOME}/Downloads/tensorflow/models/research"
-# export PYTHONPATH=${PYTHONPATH}:"${MODEL_RESEARCH_DIR}"
-# export PYTHONPATH=${PYTHONPATH}:"${MODEL_RESEARCH_DIR}/slim"
-
-
-# Convenient subt aliases
-export SUBT=~/Documents/projects/SubT
-alias subt="cd ${SUBT}"
-
-# Go alias
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$HOME/go/bin
-
 # Add pip binaries location to path
 export PATH=$PATH:${HOME}/.local/bin
-
-export PATH="$HOME/.poetry/bin:$PATH"
