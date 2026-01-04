@@ -1,40 +1,111 @@
-install the following:
+# Dotfiles
 
-1. Install ZSH (`sudo apt install zsh`)
-1. Install oh-my-zsh (`https://github.com/robbyrussell/oh-my-zsh`). This creates
-a new folder (`~/.oh-my-zsh`).
-1. Install zsh-autosuggestions plugin by downloading something into
-`~/.oh-my-zsh` folder
-    https://github.com/zsh-users/zsh-autosuggestions
-1. Install fast-syntax-highlighting by downloading another thing into the
-~/.oh-my-zsh folder.
-    https://github.com/zdharma/fast-syntax-highlighting 
+Personal configuration files for zsh, vim, and tmux.
 
+## Updated Fedora 43 Setup
 
-1. Install tmux
+### Zsh
 
-Add .vim, .vimrc, .tmux* files.
+1. Install zsh:
+   ```bash
+   sudo dnf install zsh
+   ```
 
-`git submodule update --init`
+2. Install oh-my-zsh:
+   ```bash
+   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+   ```
 
-https://help.github.com/articles/ignoring-files/
-Needs to be an absolute path
-git config --global core.excludesfile ~/.gitignore_global
+3. Install zsh plugins:
+   ```bash
+   git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+   git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+   ```
 
-`sudo chsh` -> /usr/bin/zsh
+4. Symlink .zshrc:
+   ```bash
+   ln -sf ~/dotfiles/.zshrc ~/.zshrc
+   ```
 
-install powerline fonts, and change shell font
+5. Set zsh as default shell:
+   ```bash
+   chsh -s /usr/bin/zsh
+   ```
+   Log out and back in for the change to take effect.
 
-Make sure to install YCM by following the instructions on the website: https://github.com/ycm-core/YouCompleteMe#installation
+---
 
-which is tl;dr python3 install.py --clangd-completer
+## Legacy
 
-clang install (with tooling:)
+### Shell Setup (Fedora)
 
+#### Install powerline fonts (for theme)
 
-sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 60 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-6.0 --slave /usr/share/man/man1/clang.1.gz clang.1.gz /usr/share/man/man1/clang-6.0.1.gz --slave /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-6.0 --slave /usr/bin/clang-format clang-format /usr/bin/clang-format-6.0 --slave /usr/bin/clangd clangd /usr/bin/clangd-6.0
+```bash
+sudo dnf install powerline-fonts
+```
 
-sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-8 81 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-8 --slave /usr/share/man/man1/clang.1.gz clang.1.gz /usr/share/man/man1/clang-8.1.gz --slave /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-8 --slave /usr/bin/clang-format clang-format /usr/bin/clang-format-8 --slave /usr/bin/clangd clangd /usr/bin/clangd-8 
+#### Symlink bashrc
 
-make sure to install all of the things it asks for as well.
+```bash
+ln -sf ~/dotfiles/.bashrc ~/.bashrc
+```
+
+---
+
+### Vim Setup
+
+### 1. Symlink vim configs
+
+```bash
+ln -sf ~/dotfiles/.vimrc ~/.vimrc
+ln -sf ~/dotfiles/.vim ~/.vim
+```
+
+### 2. Initialize submodules (vim plugins)
+
+```bash
+cd ~/dotfiles
+git submodule update --init --recursive
+```
+
+### 3. Install YouCompleteMe
+
+Follow the official instructions: https://github.com/ycm-core/YouCompleteMe#installation
+
+```bash
+cd ~/.vim/bundle/YouCompleteMe
+python3 install.py --clangd-completer
+```
+
+---
+
+## Tmux Setup
+
+```bash
+ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
+ln -sf ~/dotfiles/.tmux.conf.local ~/.tmux.conf.local
+```
+
+---
+
+## Git Setup
+
+Configure global gitignore:
+
+```bash
+git config --global core.excludesfile ~/dotfiles/.gitignore_global
+```
+
+---
+
+## C++ Development (Fedora)
+
+Install clang toolchain:
+
+```bash
+sudo dnf install clang clang-tools-extra
+```
+
+This provides clang, clang++, clangd, clang-format, and clang-tidy.
 
